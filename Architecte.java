@@ -1,67 +1,102 @@
-import java.util.*;
 
- public class Architecte extends Personne {
+
+public class Architecte extends Personne {
 
   private String consR;
   private boolean inscOrdre;
+  private Adresse adresse;
+  private String tel ;
 
-  // private boolean telVal;
+
 
  
-  public String Architecte (String nom, String prenom, String civilite, String mail, String consR, boolean inscOrdre, Adresse adresse, String telephone) {
+  /**
+ * @param nom
+ * @param prenom
+ * @param consR
+ * @param inscOrdre
+ * @param adresse
+ * @param tel
+ */
+
+public Architecte (String nom, String prenom, String consR, boolean inscOrdre, Adresse adresse, String tel) {
    super(nom, prenom);
+   
+   this.nom = nom;
+   this.prenom = prenom;
    this.consR = consR;
    this.inscOrdre = inscOrdre;
-   this.adresse = adresse;
+   this.adresse = adresse ;
+   this.tel = tel;
 
-   public void setConsR(String consR) {
-    this.consR = consR;
-   }
- 
-   public String getConsR() {
-    return consR;
-   }
+   
+  
 
-   boolean telVal {
-   if (telVal(tel)) {
-    this.telVal = tel;
-   } else {
+    if (telVal(tel)) {
+    this.tel = tel;
+   } 
+  else {
     this.tel =" ";
-    Maj_conseilRegional();
    }
-   private boolean telValide (String telephone){
-    if (telephone.length() == 10 && telephone.equals(telephone)) {
-     return true;
-    } else {
+}
+
+
+private boolean telVal (String telephone) {
+    if (telephone.length() >= 10) {
      return false;
+    } else {
+        for (int i=0; i<telephone.length(); i++)  {
+         if (! Character.isDigit(telephone.charAt(i)))
+            return false;
+        }
+        return true;
     }
-   }
+}
 
-   public void Maj_conseilRegional () {
+   public void Maj_consR () {
     if (inscOrdre) {
-     consR = consR + " inscrit au conseil de l'ordre";
+     consR = consR + " inscrit ";
 
     } else {
-     consR = consR + "Non inscrit au conseil de l'ordre";
+     consR = consR + "Non inscrit";
     }
 
    }
    public String toString () {
     String chaine = "";
     chaine = chaine + this.nom + " " + this.prenom + " ";
-    chaine = chaine + this.civilite + " " + this.mail + "";
-    chaine = chaine + this.consR;
+    chaine = chaine + this.consR + " ";
     chaine = chaine + this.adresse + " ";
-    chaine = chaine + this.telephone + " ";
+    chaine = chaine + this.tel + " ";
 
     if (inscOrdre) {
-     chaine = chaine + "inscrit" + " ";
+     chaine = chaine + "inscrit" ;
     } else {
-     chaine = chaine + "non inscrit" + " ";
+     chaine = chaine + "non inscrit";
     }
     return chaine;
    }
+ 
+  public String getConsR() {
+    return consR;
+}
+public void setConsR(String consR) {
+    this.consR = consR;
+}
+public boolean isInscOrdre() {
+    return inscOrdre;
+}
+public void setInscOrdre(boolean inscOrdre) {
+    this.inscOrdre = inscOrdre;
+}
+public String getTel() {
+    return tel;
+}
+public void setTel(String tel) {
+    this.tel = tel;
+}
   }
- }
+ 
 
-//return this.nom+ " " + this.prenom;
+
+  

@@ -1,5 +1,3 @@
-import java.util.*;
-
 
 public class Deposant extends Personne {
 
@@ -7,12 +5,12 @@ public class Deposant extends Personne {
     private String mail;
     private Adresse adresse;
     
-    public Deposant(String nom, String prenom, String civil, String mail, Adresse adresse){
+    public Deposant(String nom, String prenom, String civil, String mail, Adresse adresse, Deposant deposant){
             super(nom, prenom);
 
-this.civil = validate (civil, 10);
-this.mail = validate (mail, 100);
-this.adresse = adresse;
+deposant.civil = validate (civil, 10);
+deposant.mail = validate (mail, 100);
+
     }
     
   public String getCivil(){
@@ -35,7 +33,8 @@ public void setAdresse(Adresse adresse){
     this.adresse = adresse;
 }
 
-@Override
+
+
 public String toString(){
     return "Deposant civilite=" +civil+ ", mail= " + mail+  ", adresse= " +adresse+ ", nom=" + nom + ", prenom" + prenom + "";
 }
